@@ -11,7 +11,7 @@ public class ApiDemosTest extends BaseTest {
     public void viewsMenuShowsButtonsOption() {
         ApiDemosPage page = new ApiDemosPage(driver);
         page.tap("Views");
-        Assert.assertTrue(page.isVisible("Buttonz"), "Buttons should be visible under Views");
+        Assert.assertTrue(page.isVisible("Buttons"), "Buttons should be visible under Views");
     }
 
     @Test(description = "Alert dialog opens and can be dismissed")
