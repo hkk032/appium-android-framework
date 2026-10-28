@@ -1,5 +1,6 @@
 package com.hemant.qa.base;
 
+import com.hemant.qa.utils.ConfigReader;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.OutputType;
@@ -23,15 +24,15 @@ public class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws MalformedURLException {
-        String apkPath = Paths.get("apps", "ApiDemos-debug.apk").toAbsolutePath().toString();
+        String apkPath = Paths.get(ConfigReader.get("app.path")).toAbsolutePath().toString();
 
         UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName("Android")
-                .setAutomationName("UiAutomator2")
+                .setPlatformName(ConfigReader.get("platform.name"))
+                .setAutomationName(ConfigReader.get("automation.name"))
                 .setApp(apkPath)
-                .setNewCommandTimeout(Duration.ofSeconds(120));
+                .setNewCommandTimeout(Duration.ofSeconds(ConfigReader.getInt("new.command.timeout.seconds")));
 
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+        driver = new AndroidDriver(new URL(ConfigReader.get("appium.server.url")), options);
     }
 
     @AfterMethod(alwaysRun = true)

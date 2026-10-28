@@ -1,5 +1,6 @@
 package com.hemant.qa.pages;
 
+import com.hemant.qa.utils.ConfigReader;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ public class ApiDemosPage {
 
     public ApiDemosPage(AndroidDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigReader.getInt("explicit.wait.seconds")));
     }
 
     public void tap(String accessibilityId) {
