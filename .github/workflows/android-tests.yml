@@ -44,7 +44,7 @@ jobs:
           arch: x86_64
           target: google_apis
           script: |
-            appium --log-level warn > appium.log 2>&1 &
+            appium --log-level info > appium.log 2>&1 &
             timeout 60 bash -c 'until curl -s http://127.0.0.1:4723/status; do sleep 2; done'
             mvn -B clean test
 
