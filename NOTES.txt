@@ -31,3 +31,7 @@ What each part does (interview material):
 5. Enable KVM turns on hardware acceleration. Without it, the emulator is too slow to be usable.
 6. android-emulator-runner boots an Android emulator, then runs the lines under script:. Each line is a separate command: start Appium in the background (&), wait until it answers on /status, then run mvn.
 7. Upload reports runs with if: always(), so you get the reports and Appium log even when tests fail, which is exactly when you need them.
+
+
+
+***** At the end get a document explaining all concepts, what we did and why we did. and put the content here *****
