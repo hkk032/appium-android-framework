@@ -21,3 +21,13 @@ What it does (interview material):
 
 testng.xml
 What it does: it’s the TestNG suite file. It lists which test classes to run, and Surefire (set up in your pom.xml) reads it when you run mvn test
+
+android-tests.yml
+What each part does (interview material):
+1. on: runs the workflow on pushes to main, on pull requests, and manually from the Actions tab (workflow_dispatch).
+2. runs-on: ubuntu-latest gives you a fresh Linux machine for every run, so nothing from your laptop carries over. That’s why we install everything in the steps.
+3. setup-java and setup-node install JDK 17 and Node 22, matching your laptop. cache: maven caches the dependencies so later runs are faster.
+4. Install Appium puts the same Appium and UiAutomator2 driver on the runner that you installed by hand.
+5. Enable KVM turns on hardware acceleration. Without it, the emulator is too slow to be usable.
+6. android-emulator-runner boots an Android emulator, then runs the lines under script:. Each line is a separate command: start Appium in the background (&), wait until it answers on /status, then run mvn.
+7. Upload reports runs with if: always(), so you get the reports and Appium log even when tests fail, which is exactly when you need them.
